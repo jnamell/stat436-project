@@ -7,6 +7,7 @@ date: "2024-02-11"
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(patchwork)
 ```
 
 ```{r}
@@ -52,4 +53,21 @@ wi_weather |>
                      values = c("green", "red", "blue"))
 ```
 
+```{r}
+p1<-ggplot(wi_yields)+
+  geom_line(aes(year, tonnes_per_ha, color=commodity))+
+  labs(x="", y="Tonnes Per Hectacre", color="Commodity")
+p2<-wi_weather |> 
+  group_by(year = year(date)) |> 
+  summarize(precipitation=sum(precipitation)) |> 
+  filter(year>1923) |> 
+  ggplot()+
+  geom_line(aes(year, precipitation))+
+  labs(x="Year", y="Precipitation (inches)")
+p1/p2+
+  plot_annotation("Wisconsin Annual Crop Yields vs Annual Precipitation")
+```
+```{r}
+wi_yields
+```
 
