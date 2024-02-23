@@ -1,0 +1,41 @@
+---
+title: "gen_data"
+date: "2024-02-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(tidyverse)
+```
+## This converts the data into a more usable format and exports it to csv.
+
+https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md
+```{r}
+read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/arable_land_pin.csv') |> 
+  filter(Entity=="United States") |> 
+  left_join(read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/key_crop_yields.csv')) |> 
+  select_if(~ !any(is.na(.))) |> #drops columns with NAs
+  select(!c(Code, Entity)) |> 
+  write_csv(file='clean_data/us_crop_data.csv')
+```
+
+https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data
+```{r}
+read_csv("raw_data/GlobalLandTemperaturesByState.csv") |> 
+  filter(State=='Wisconsin') |> 
+  mutate(year=year(dt)) |>
+  filter(year>1780) |> #when data starts reliably having a measurement every month
+  group_by(year) |> 
+  summarize(avg_temp = mean(AverageTemperature), avg_temp_uncertainty=mean(AverageTemperatureUncertainty)) |> 
+  write_csv(file='clean_data/wisconsin_global_land_temps.csv')
+```
+
+https://quickstats.nass.usda.gov/results/1257F09F-FF9A-36F6-B1E7-05F8AF2058FE
+
+```{r}
+read_csv("raw_data/C4B8556B-0E81-390D-B111-D1013BEA7A3B.csv") |> 
+  filter(Period=="YEAR") |> 
+  select(Year, Commodity, Value) |> 
+  rename(year=Year, commodity=Commodity, bu_per_acre=Value) |> 
+  write_csv(file='clean_data/wisconsin_nass_yields.csv')
+```
