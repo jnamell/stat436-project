@@ -359,29 +359,24 @@ display: none;
 <h2>This converts the data into a more usable format and exports it to
 csv.</h2>
 <p><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md" class="uri">https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md</a></p>
-<pre class="r"><code>read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/arable_land_pin.csv&#39;) |&gt; 
+<pre class="r"><code>  read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/key_crop_yields.csv&#39;) |&gt; 
   filter(Entity==&quot;United States&quot;) |&gt; 
-  left_join(read_csv(&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/key_crop_yields.csv&#39;)) |&gt; 
   select_if(~ !any(is.na(.))) |&gt; #drops columns with NAs
   select(!c(Code, Entity)) |&gt; 
+  pivot_longer(cols=-Year, names_to = c(&#39;commodity&#39;, NA), names_sep = &#39; &#39;) |&gt; 
+  rename(year=Year, tonnes_per_ha=value) |&gt; 
+  mutate(commodity = tolower(commodity)) |&gt; 
   write_csv(file=&#39;clean_data/us_crop_data.csv&#39;)</code></pre>
-<pre><code>## Rows: 11280 Columns: 4
-## ── Column specification ────────────────────────────────────────────────────────
-## Delimiter: &quot;,&quot;
-## chr (2): Entity, Code
-## dbl (2): Year, Arable land needed to produce a fixed quantity of crops ((1.0...
-## 
-## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Rows: 13075 Columns: 14
+<pre><code>## Rows: 13075 Columns: 14
 ## ── Column specification ────────────────────────────────────────────────────────
 ## Delimiter: &quot;,&quot;
 ## chr  (2): Entity, Code
 ## dbl (12): Year, Wheat (tonnes per hectare), Rice (tonnes per hectare), Maize...
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
-## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-## Joining with `by = join_by(Entity, Code, Year)`</code></pre>
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre><code>## Warning: Expected 2 pieces. Additional pieces discarded in 9 rows [1, 2, 3, 4, 5, 6, 7,
+## 8, 9].</code></pre>
 <p><a href="https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data" class="uri">https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data</a></p>
 <pre class="r"><code>read_csv(&quot;raw_data/GlobalLandTemperaturesByState.csv&quot;) |&gt; 
   filter(State==&#39;Wisconsin&#39;) |&gt; 
@@ -403,7 +398,11 @@ csv.</h2>
 <pre class="r"><code>read_csv(&quot;raw_data/C4B8556B-0E81-390D-B111-D1013BEA7A3B.csv&quot;) |&gt; 
   filter(Period==&quot;YEAR&quot;) |&gt; 
   select(Year, Commodity, Value) |&gt; 
-  rename(year=Year, commodity=Commodity, bu_per_acre=Value) |&gt; 
+  mutate(Value = case_when(Commodity==&#39;BARLEY&#39; ~ Value*.0538, #apparently bushels are different
+         Commodity==&#39;CORN&#39; ~ Value*.0628,
+         TRUE ~ Value*.0673)) |&gt; 
+  rename(year=Year, commodity=Commodity, tonnes_per_ha=Value) |&gt; 
+  mutate(commodity = tolower(commodity)) |&gt; 
   write_csv(file=&#39;clean_data/wisconsin_nass_yields.csv&#39;)</code></pre>
 <pre><code>## Rows: 729 Columns: 21
 ## ── Column specification ────────────────────────────────────────────────────────

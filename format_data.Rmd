@@ -11,11 +11,13 @@ library(tidyverse)
 
 https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/readme.md
 ```{r}
-read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/arable_land_pin.csv') |> 
+  read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/key_crop_yields.csv') |> 
   filter(Entity=="United States") |> 
-  left_join(read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-09-01/key_crop_yields.csv')) |> 
   select_if(~ !any(is.na(.))) |> #drops columns with NAs
   select(!c(Code, Entity)) |> 
+  pivot_longer(cols=-Year, names_to = c('commodity', NA), names_sep = ' ') |> 
+  rename(year=Year, tonnes_per_ha=value) |> 
+  mutate(commodity = tolower(commodity)) |> 
   write_csv(file='clean_data/us_crop_data.csv')
 ```
 
@@ -36,7 +38,11 @@ https://quickstats.nass.usda.gov/results/1257F09F-FF9A-36F6-B1E7-05F8AF2058FE
 read_csv("raw_data/C4B8556B-0E81-390D-B111-D1013BEA7A3B.csv") |> 
   filter(Period=="YEAR") |> 
   select(Year, Commodity, Value) |> 
-  rename(year=Year, commodity=Commodity, bu_per_acre=Value) |> 
+  mutate(Value = case_when(Commodity=='BARLEY' ~ Value*.0538, #apparently bushels are different
+         Commodity=='CORN' ~ Value*.0628,
+         TRUE ~ Value*.0673)) |> 
+  rename(year=Year, commodity=Commodity, tonnes_per_ha=Value) |> 
+  mutate(commodity = tolower(commodity)) |> 
   write_csv(file='clean_data/wisconsin_nass_yields.csv')
 ```
 
