@@ -6,6 +6,7 @@ output: html_document
 
 ```{r setup, include=FALSE}
 library(tidyverse)
+library(lubridate)
 ```
 ## This converts the data into a more usable format and exports it to csv.
 
@@ -15,9 +16,11 @@ https://github.com/rfordatascience/tidytuesday/blob/master/data/2020/2020-09-01/
   filter(Entity=="United States") |> 
   select_if(~ !any(is.na(.))) |> #drops columns with NAs
   select(!c(Code, Entity)) |> 
-  pivot_longer(cols=-Year, names_to = c('commodity', NA), names_sep = ' ') |> 
+  pivot_longer(cols=-Year, names_to = c('commodity', NA), names_sep = ' \\(') |> 
   rename(year=Year, tonnes_per_ha=value) |> 
   mutate(commodity = tolower(commodity)) |> 
+  mutate(commodity = case_when(commodity == "maize" ~ "corn",
+                   TRUE ~ commodity)) |> 
   write_csv(file='clean_data/us_crop_data.csv')
 ```
 
@@ -58,5 +61,19 @@ census |> filter(Name=="Wisconsin") |>
   select(Year, `Resident Population`) |> 
   rename(year=Year, pop=`Resident Population`) |> 
   write_csv(file='clean_data/wi_census.csv')
+```
+
+https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/pcp/ytd/12/1895-2023
+```{r}
+read_csv("https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/pcp/1/0/1895-2023.csv", 
+         skip=4, col_names = c("date", "precipitation")) |> 
+  left_join(read_csv("https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/tavg/1/0/1895-2023.csv",
+                     skip=4, col_names=c("date", "avg_temp"))) |> 
+  left_join(read_csv("https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/tmax/1/0/1895-2023.csv",
+                     skip=4, col_names=c("date", "max_temp"))) |> 
+  left_join(read_csv("https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/tmin/1/0/1895-2023.csv",
+                     skip=4, col_names=c("date", "min_temp"))) |>
+  mutate(date = (ym(date))) |> 
+  write_csv("clean_data/monthly_wi_weather.csv")
 ```
 

@@ -6,24 +6,50 @@ date: "2024-02-11"
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
 ```
 
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
+```{r}
+wi_yields <- read_csv("clean_data/wisconsin_nass_yields.csv")
+us_yields <- read_csv("clean_data/us_crop_data.csv")
 ```
 
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r}
+ggplot(wi_yields)+
+  geom_line(aes(year, tonnes_per_ha, color=commodity))+
+  labs(x="Year", y="Tonnes Per Hectacre", color="Commodity")
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```{r}
+ggplot(us_yields)+
+  geom_line(aes(year, tonnes_per_ha, color=commodity))+
+  labs(x="Year", y="Tonnes Per Hectacre", color="Commodity")
+```
+```{r}
+us_yields |> filter(commodity=="barley"|commodity=="corn"|commodity=="soybeans"|commodity=="wheat") |> 
+  bind_rows(wi_yields, .id="level") |> 
+  mutate(level = case_when(level==1 ~ "US",
+                           TRUE ~ "Wisconsin")) |> 
+  filter(year>1960) |> 
+  ggplot()+
+    geom_line(aes(year, tonnes_per_ha, color=commodity))+
+    facet_grid(level~.) +
+    labs(x="Year", y="Tonnes Per Hectacre", color="Commodity")
+```
+```{r}
+wi_weather <- read_csv("clean_data/monthly_wi_weather.csv")
+wi_weather
+```
+```{r}
+wi_weather |> 
+  group_by(year = year(date)) |> 
+  summarize(max_temp=max(max_temp), avg_temp=mean(avg_temp), min_temp=min(min_temp)) |> 
+  pivot_longer(cols=-year, names_to="Temperature") |> 
+  ggplot(aes(year, value))+
+  geom_line(aes(color=Temperature))+
+  labs(title="Wisconsin Temperatures", x="Year", y="Temp in F")+
+  scale_color_manual(labels = c("Average", "Max", "Min"),
+                     values = c("green", "red", "blue"))
+```
+
+

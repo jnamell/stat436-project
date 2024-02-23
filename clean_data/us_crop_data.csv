@@ -1,7 +1,7 @@
 year,commodity,tonnes_per_ha
 1961,wheat,1.607
 1961,rice,3.8227
-1961,maize,3.9184
+1961,corn,3.9184
 1961,soybeans,1.6900000000000002
 1961,potatoes,22.2021
 1961,beans,1.5413
@@ -10,7 +10,7 @@ year,commodity,tonnes_per_ha
 1961,bananas,10.5447
 1962,wheat,1.6809
 1962,rice,4.1785000000000005
-1962,maize,4.0621
+1962,corn,4.0621
 1962,soybeans,1.6302
 1962,potatoes,22.0346
 1962,beans,1.4049
@@ -19,7 +19,7 @@ year,commodity,tonnes_per_ha
 1962,bananas,9.7139
 1963,wheat,1.6949
 1963,rice,4.4449000000000005
-1963,maize,4.2596
+1963,corn,4.2596
 1963,soybeans,1.6432
 1963,potatoes,22.971
 1963,beans,1.6153000000000002
@@ -28,7 +28,7 @@ year,commodity,tonnes_per_ha
 1963,bananas,9.1981
 1964,wheat,1.7344000000000002
 1964,rice,4.5906
-1964,maize,3.9498
+1964,corn,3.9498
 1964,soybeans,1.5309
 1964,potatoes,21.2448
 1964,beans,1.3886
@@ -37,7 +37,7 @@ year,commodity,tonnes_per_ha
 1964,bananas,11.4667
 1965,wheat,1.7853
 1965,rice,4.7693
-1965,maize,4.6492000000000004
+1965,corn,4.6492000000000004
 1965,soybeans,1.6508
 1965,potatoes,23.5879
 1965,beans,1.2302
@@ -46,7 +46,7 @@ year,commodity,tonnes_per_ha
 1965,bananas,8.458300000000001
 1966,wheat,1.7688
 1966,rice,4.8442
-1966,maize,4.5892
+1966,corn,4.5892
 1966,soybeans,1.7087
 1966,potatoes,23.5409
 1966,beans,1.4835
@@ -55,7 +55,7 @@ year,commodity,tonnes_per_ha
 1966,bananas,9.7531
 1967,wheat,1.7375
 1967,rice,5.085100000000001
-1967,maize,5.0265
+1967,corn,5.0265
 1967,soybeans,1.6498000000000002
 1967,potatoes,23.4712
 1967,beans,1.3769
@@ -64,7 +64,7 @@ year,commodity,tonnes_per_ha
 1967,bananas,8.978
 1968,wheat,1.9116
 1968,rice,4.96
-1968,maize,4.9891000000000005
+1968,corn,4.9891000000000005
 1968,soybeans,1.7986
 1968,potatoes,23.9308
 1968,beans,1.3723
@@ -73,7 +73,7 @@ year,commodity,tonnes_per_ha
 1968,bananas,7.5825
 1969,wheat,2.0580000000000003
 1969,rice,4.8399
-1969,maize,5.3908000000000005
+1969,corn,5.3908000000000005
 1969,soybeans,1.8435
 1969,potatoes,24.746
 1969,beans,1.4431
@@ -82,7 +82,7 @@ year,commodity,tonnes_per_ha
 1969,bananas,7.444100000000001
 1970,wheat,2.0865
 1970,rice,5.1763
-1970,maize,4.5439
+1970,corn,4.5439
 1970,soybeans,1.7941
 1970,potatoes,25.5609
 1970,beans,1.3841
@@ -91,7 +91,7 @@ year,commodity,tonnes_per_ha
 1970,bananas,8.2338
 1971,wheat,2.2829
 1971,rice,5.288200000000001
-1971,maize,5.527
+1971,corn,5.527
 1971,soybeans,1.8522
 1971,potatoes,25.5955
 1971,beans,1.3785
@@ -100,7 +100,7 @@ year,commodity,tonnes_per_ha
 1971,bananas,7.2765
 1972,wheat,2.1983
 1972,rice,5.2679
-1972,maize,6.089700000000001
+1972,corn,6.089700000000001
 1972,soybeans,1.8706
 1972,potatoes,26.3167
 1972,beans,1.4702000000000002
@@ -109,7 +109,7 @@ year,commodity,tonnes_per_ha
 1972,bananas,7.9485
 1973,wheat,2.1248
 1973,rice,4.7911
-1973,maize,5.7278
+1973,corn,5.7278
 1973,soybeans,1.8696
 1973,potatoes,25.6036
 1973,beans,1.3697
@@ -118,7 +118,7 @@ year,commodity,tonnes_per_ha
 1973,bananas,11.2097
 1974,wheat,1.8333
 1974,rice,4.977
-1974,maize,4.5119
+1974,corn,4.5119
 1974,soybeans,1.5933000000000002
 1974,potatoes,27.4345
 1974,beans,1.5013
@@ -127,7 +127,7 @@ year,commodity,tonnes_per_ha
 1974,bananas,12.1215
 1975,wheat,2.0582000000000003
 1975,rice,5.1086
-1975,maize,5.4213000000000005
+1975,corn,5.4213000000000005
 1975,soybeans,1.9421
 1975,potatoes,28.5023
 1975,beans,1.3335
@@ -136,7 +136,7 @@ year,commodity,tonnes_per_ha
 1975,bananas,11.0275
 1976,wheat,2.0375
 1976,rice,5.2268
-1976,maize,5.5206
+1976,corn,5.5206
 1976,soybeans,1.7543000000000002
 1976,potatoes,29.0794
 1976,beans,1.3424
@@ -145,7 +145,7 @@ year,commodity,tonnes_per_ha
 1976,bananas,10.148
 1977,wheat,2.0629
 1977,rice,4.945
-1977,maize,5.7015
+1977,corn,5.7015
 1977,soybeans,2.0552
 1977,potatoes,29.129900000000003
 1977,beans,1.4612
@@ -154,7 +154,7 @@ year,commodity,tonnes_per_ha
 1977,bananas,11.7982
 1978,wheat,2.1136
 1978,rice,5.0257000000000005
-1978,maize,6.3421
+1978,corn,6.3421
 1978,soybeans,1.9741
 1978,potatoes,29.7185
 1978,beans,1.4592
@@ -163,7 +163,7 @@ year,commodity,tonnes_per_ha
 1978,bananas,11.2609
 1979,wheat,2.298
 1979,rice,5.1548
-1979,maize,6.8734
+1979,corn,6.8734
 1979,soybeans,2.1614
 1979,potatoes,30.344
 1979,beans,1.6599000000000002
@@ -172,7 +172,7 @@ year,commodity,tonnes_per_ha
 1979,bananas,10.16
 1980,wheat,2.2513
 1980,rice,4.9461
-1980,maize,5.7118
+1980,corn,5.7118
 1980,soybeans,1.7827000000000002
 1980,potatoes,29.5245
 1980,beans,1.6116
@@ -181,7 +181,7 @@ year,commodity,tonnes_per_ha
 1980,bananas,9.087
 1981,wheat,2.3229
 1981,rice,5.4015
-1981,maize,6.838
+1981,corn,6.838
 1981,soybeans,2.0331
 1981,potatoes,30.8199
 1981,beans,1.6172
@@ -190,7 +190,7 @@ year,commodity,tonnes_per_ha
 1981,bananas,10.4615
 1982,wheat,2.3859
 1982,rice,5.279100000000001
-1982,maize,7.1082
+1982,corn,7.1082
 1982,soybeans,2.1213
 1982,potatoes,31.2544
 1982,beans,1.6124
@@ -199,7 +199,7 @@ year,commodity,tonnes_per_ha
 1982,bananas,9.069
 1983,wheat,2.6509
 1983,rice,5.1532
-1983,maize,5.089300000000001
+1983,corn,5.089300000000001
 1983,soybeans,1.7594
 1983,potatoes,29.9754
 1983,beans,1.5273
@@ -208,7 +208,7 @@ year,commodity,tonnes_per_ha
 1983,bananas,5.828600000000001
 1984,wheat,2.6073
 1984,rice,5.552300000000001
-1984,maize,6.6981
+1984,corn,6.6981
 1984,soybeans,1.893
 1984,potatoes,31.1082
 1984,beans,1.6171
@@ -217,7 +217,7 @@ year,commodity,tonnes_per_ha
 1984,bananas,11.5429
 1985,wheat,2.5197000000000003
 1985,rice,6.0704
-1985,maize,7.4074
+1985,corn,7.4074
 1985,soybeans,2.2923
 1985,potatoes,33.368900000000004
 1985,beans,1.6871
@@ -226,7 +226,7 @@ year,commodity,tonnes_per_ha
 1985,bananas,10.8824
 1986,wheat,2.3167
 1986,rice,6.3340000000000005
-1986,maize,7.493
+1986,corn,7.493
 1986,soybeans,2.2411000000000003
 1986,potatoes,33.054
 1986,beans,1.7213
@@ -235,7 +235,7 @@ year,commodity,tonnes_per_ha
 1986,bananas,11.0831
 1987,wheat,2.533
 1987,rice,6.2271
-1987,maize,7.5225
+1987,corn,7.5225
 1987,soybeans,2.2794000000000003
 1987,potatoes,33.7394
 1987,beans,1.7524000000000002
@@ -244,7 +244,7 @@ year,commodity,tonnes_per_ha
 1987,bananas,11.94
 1988,wheat,2.2913
 1988,rice,6.1801
-1988,maize,5.3109
+1988,corn,5.3109
 1988,soybeans,1.8155
 1988,potatoes,31.7265
 1988,beans,1.5951000000000002
@@ -253,7 +253,7 @@ year,commodity,tonnes_per_ha
 1988,bananas,13.8568
 1989,wheat,2.2024
 1989,rice,6.4466
-1989,maize,7.2978
+1989,corn,7.2978
 1989,soybeans,2.1783
 1989,potatoes,32.4007
 1989,beans,1.611
@@ -262,7 +262,7 @@ year,commodity,tonnes_per_ha
 1989,bananas,13.4321
 1990,wheat,2.6567000000000003
 1990,rice,6.197500000000001
-1990,maize,7.438000000000001
+1990,corn,7.438000000000001
 1990,soybeans,2.2920000000000003
 1990,potatoes,32.880900000000004
 1990,beans,1.7416
@@ -271,7 +271,7 @@ year,commodity,tonnes_per_ha
 1990,bananas,14.2389
 1991,wheat,2.3038000000000003
 1991,rice,6.423100000000001
-1991,maize,6.8171
+1991,corn,6.8171
 1991,soybeans,2.3029
 1991,potatoes,34.057900000000004
 1991,beans,1.9776
@@ -280,7 +280,7 @@ year,commodity,tonnes_per_ha
 1991,bananas,14.3639
 1992,wheat,2.6433
 1992,rice,6.4294
-1992,maize,8.252600000000001
+1992,corn,8.252600000000001
 1992,soybeans,2.5295
 1992,potatoes,36.2533
 1992,beans,1.6571
@@ -289,7 +289,7 @@ year,commodity,tonnes_per_ha
 1992,bananas,15.4545
 1993,wheat,2.5699
 1993,rice,6.1763
-1993,maize,6.321000000000001
+1993,corn,6.321000000000001
 1993,soybeans,2.1941
 1993,potatoes,36.5091
 1993,beans,1.5144
@@ -298,7 +298,7 @@ year,commodity,tonnes_per_ha
 1993,bananas,15.9226
 1994,wheat,2.527
 1994,rice,6.6851
-1994,maize,8.6996
+1994,corn,8.6996
 1994,soybeans,2.7813000000000003
 1994,potatoes,37.9868
 1994,beans,1.7719
@@ -307,7 +307,7 @@ year,commodity,tonnes_per_ha
 1994,bananas,17.584300000000002
 1995,wheat,2.4065000000000003
 1995,rice,6.3007
-1995,maize,7.122800000000001
+1995,corn,7.122800000000001
 1995,soybeans,2.3759
 1995,potatoes,36.2537
 1995,beans,1.8139
@@ -316,7 +316,7 @@ year,commodity,tonnes_per_ha
 1995,bananas,16.573
 1996,wheat,2.4389000000000003
 1996,rice,6.8593
-1996,maize,7.9773
+1996,corn,7.9773
 1996,soybeans,2.5269
 1996,potatoes,39.2447
 1996,beans,1.7919
@@ -325,7 +325,7 @@ year,commodity,tonnes_per_ha
 1996,bananas,15.2062
 1997,wheat,2.6574
 1997,rice,6.6099000000000006
-1997,maize,7.952100000000001
+1997,corn,7.952100000000001
 1997,soybeans,2.6164
 1997,potatoes,38.6777
 1997,beans,1.8714
@@ -334,7 +334,7 @@ year,commodity,tonnes_per_ha
 1997,bananas,16.1719
 1998,wheat,2.9034
 1998,rice,6.347300000000001
-1998,maize,8.4382
+1998,corn,8.4382
 1998,soybeans,2.6169
 1998,potatoes,38.4419
 1998,beans,1.7778
@@ -343,7 +343,7 @@ year,commodity,tonnes_per_ha
 1998,bananas,16.5652
 1999,wheat,2.8726000000000003
 1999,rice,6.5753
-1999,maize,8.3977
+1999,corn,8.3977
 1999,soybeans,2.4634
 1999,potatoes,40.2366
 1999,beans,1.9756
@@ -352,7 +352,7 @@ year,commodity,tonnes_per_ha
 1999,bananas,19.4052
 2000,wheat,2.8238000000000003
 2000,rice,7.039700000000001
-2000,maize,8.5911
+2000,corn,8.5911
 2000,soybeans,2.5614000000000003
 2000,potatoes,42.7161
 2000,beans,1.8404
@@ -361,7 +361,7 @@ year,commodity,tonnes_per_ha
 2000,bananas,22.2572
 2001,wheat,2.7018
 2001,rice,7.2807
-2001,maize,8.673300000000001
+2001,corn,8.673300000000001
 2001,soybeans,2.6639
 2001,potatoes,40.1803
 2001,beans,1.7584000000000002
@@ -370,7 +370,7 @@ year,commodity,tonnes_per_ha
 2001,bananas,21.063
 2002,wheat,2.3567
 2002,rice,7.373
-2002,maize,8.118
+2002,corn,8.118
 2002,soybeans,2.5567
 2002,potatoes,40.5669
 2002,beans,1.9538
@@ -379,7 +379,7 @@ year,commodity,tonnes_per_ha
 2002,bananas,16.858700000000002
 2003,wheat,2.9712
 2003,rice,7.4759
-2003,maize,8.9246
+2003,corn,8.9246
 2003,soybeans,2.2769
 2003,potatoes,41.0985
 2003,beans,1.8717
@@ -388,7 +388,7 @@ year,commodity,tonnes_per_ha
 2003,bananas,18.7747
 2004,wheat,2.9026
 2004,rice,7.832800000000001
-2004,maize,10.0637
+2004,corn,10.0637
 2004,soybeans,2.8405
 2004,potatoes,43.8152
 2004,beans,1.6404
@@ -397,7 +397,7 @@ year,commodity,tonnes_per_ha
 2004,bananas,18.5926
 2005,wheat,2.8231
 2005,rice,7.4245
-2005,maize,9.2852
+2005,corn,9.2852
 2005,soybeans,2.8961
 2005,potatoes,43.7303
 2005,beans,1.9512
@@ -406,7 +406,7 @@ year,commodity,tonnes_per_ha
 2005,bananas,23.8791
 2006,wheat,2.5986
 2006,rice,7.7313
-2006,maize,9.3577
+2006,corn,9.3577
 2006,soybeans,2.8817
 2006,potatoes,44.0949
 2006,beans,1.7677
@@ -415,7 +415,7 @@ year,commodity,tonnes_per_ha
 2006,bananas,19.037000000000003
 2007,wheat,2.7046
 2007,rice,8.091700000000001
-2007,maize,9.4585
+2007,corn,9.4585
 2007,soybeans,2.8067
 2007,potatoes,44.433600000000006
 2007,beans,1.9387
@@ -424,7 +424,7 @@ year,commodity,tonnes_per_ha
 2007,bananas,22.076
 2008,wheat,3.0175
 2008,rice,7.673100000000001
-2008,maize,9.6209
+2008,corn,9.6209
 2008,soybeans,2.6718
 2008,potatoes,44.4373
 2008,beans,1.9822
@@ -433,7 +433,7 @@ year,commodity,tonnes_per_ha
 2008,bananas,17.7303
 2009,wheat,2.9897
 2009,rice,7.9413
-2009,maize,10.3181
+2009,corn,10.3181
 2009,soybeans,2.9595
 2009,potatoes,46.4446
 2009,beans,1.9429
@@ -442,7 +442,7 @@ year,commodity,tonnes_per_ha
 2009,bananas,18.8539
 2010,wheat,3.1167
 2010,rice,7.5375
-2010,maize,9.5757
+2010,corn,9.5757
 2010,soybeans,2.9243
 2010,potatoes,44.9438
 2010,beans,1.9343
@@ -451,7 +451,7 @@ year,commodity,tonnes_per_ha
 2010,bananas,18.1438
 2011,wheat,2.9422
 2011,rice,7.9209
-2011,maize,9.2146
+2011,corn,9.2146
 2011,soybeans,2.8232
 2011,potatoes,44.6923
 2011,beans,1.9089
@@ -460,7 +460,7 @@ year,commodity,tonnes_per_ha
 2011,bananas,19.4889
 2012,wheat,3.1154
 2012,rice,8.3651
-2012,maize,7.727
+2012,corn,7.727
 2012,soybeans,2.6867
 2012,potatoes,45.7762
 2012,beans,2.1168
@@ -469,7 +469,7 @@ year,commodity,tonnes_per_ha
 2012,bananas,18.1845
 2013,wheat,3.1673
 2013,rice,8.6232
-2013,maize,9.9256
+2013,corn,9.9256
 2013,soybeans,2.9615
 2013,potatoes,46.3577
 2013,beans,2.0927
@@ -478,7 +478,7 @@ year,commodity,tonnes_per_ha
 2013,bananas,18.1923
 2014,wheat,2.9378
 2014,rice,8.491900000000001
-2014,maize,10.7326
+2014,corn,10.7326
 2014,soybeans,3.1977
 2014,potatoes,47.1507
 2014,beans,1.9655
@@ -487,7 +487,7 @@ year,commodity,tonnes_per_ha
 2014,bananas,18.7701
 2015,wheat,2.9299
 2015,rice,8.372200000000001
-2015,maize,10.5723
+2015,corn,10.5723
 2015,soybeans,3.2289000000000003
 2015,potatoes,46.900000000000006
 2015,beans,1.9729
@@ -496,7 +496,7 @@ year,commodity,tonnes_per_ha
 2015,bananas,16.1994
 2016,wheat,3.5408000000000004
 2016,rice,8.1121
-2016,maize,11.7433
+2016,corn,11.7433
 2016,soybeans,3.4936000000000003
 2016,potatoes,48.640800000000006
 2016,beans,2.0648
@@ -505,7 +505,7 @@ year,commodity,tonnes_per_ha
 2016,bananas,11.5204
 2017,wheat,3.1175
 2017,rice,8.4147
-2017,maize,11.8754
+2017,corn,11.8754
 2017,soybeans,3.3133000000000004
 2017,potatoes,48.388200000000005
 2017,beans,1.9927
@@ -514,7 +514,7 @@ year,commodity,tonnes_per_ha
 2017,bananas,15.8413
 2018,wheat,3.1999
 2018,rice,8.6211
-2018,maize,11.8639
+2018,corn,11.8639
 2018,soybeans,3.4681
 2018,potatoes,49.7624
 2018,beans,2.0843000000000003

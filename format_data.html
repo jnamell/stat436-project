@@ -363,9 +363,11 @@ csv.</h2>
   filter(Entity==&quot;United States&quot;) |&gt; 
   select_if(~ !any(is.na(.))) |&gt; #drops columns with NAs
   select(!c(Code, Entity)) |&gt; 
-  pivot_longer(cols=-Year, names_to = c(&#39;commodity&#39;, NA), names_sep = &#39; &#39;) |&gt; 
+  pivot_longer(cols=-Year, names_to = c(&#39;commodity&#39;, NA), names_sep = &#39; \\(&#39;) |&gt; 
   rename(year=Year, tonnes_per_ha=value) |&gt; 
   mutate(commodity = tolower(commodity)) |&gt; 
+  mutate(commodity = case_when(commodity == &quot;maize&quot; ~ &quot;corn&quot;,
+                   TRUE ~ commodity)) |&gt; 
   write_csv(file=&#39;clean_data/us_crop_data.csv&#39;)</code></pre>
 <pre><code>## Rows: 13075 Columns: 14
 ## ── Column specification ────────────────────────────────────────────────────────
@@ -375,8 +377,6 @@ csv.</h2>
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-<pre><code>## Warning: Expected 2 pieces. Additional pieces discarded in 9 rows [1, 2, 3, 4, 5, 6, 7,
-## 8, 9].</code></pre>
 <p><a href="https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data" class="uri">https://www.kaggle.com/datasets/berkeleyearth/climate-change-earth-surface-temperature-data</a></p>
 <pre class="r"><code>read_csv(&quot;raw_data/GlobalLandTemperaturesByState.csv&quot;) |&gt; 
   filter(State==&#39;Wisconsin&#39;) |&gt; 
@@ -433,6 +433,48 @@ census |&gt; filter(Name==&quot;Wisconsin&quot;) |&gt;
   select(Year, `Resident Population`) |&gt; 
   rename(year=Year, pop=`Resident Population`) |&gt; 
   write_csv(file=&#39;clean_data/wi_census.csv&#39;)</code></pre>
+<p><a href="https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/pcp/ytd/12/1895-2023" class="uri">https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/pcp/ytd/12/1895-2023</a></p>
+<pre class="r"><code>read_csv(&quot;https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/pcp/1/0/1895-2023.csv&quot;, 
+         skip=4, col_names = c(&quot;date&quot;, &quot;precipitation&quot;)) |&gt; 
+  left_join(read_csv(&quot;https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/tavg/1/0/1895-2023.csv&quot;,
+                     skip=4, col_names=c(&quot;date&quot;, &quot;avg_temp&quot;))) |&gt; 
+  left_join(read_csv(&quot;https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/tmax/1/0/1895-2023.csv&quot;,
+                     skip=4, col_names=c(&quot;date&quot;, &quot;max_temp&quot;))) |&gt; 
+  left_join(read_csv(&quot;https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series/47/tmin/1/0/1895-2023.csv&quot;,
+                     skip=4, col_names=c(&quot;date&quot;, &quot;min_temp&quot;))) |&gt;
+  mutate(date = (ym(date))) |&gt; 
+  write_csv(&quot;clean_data/monthly_wi_weather.csv&quot;)</code></pre>
+<pre><code>## Rows: 1548 Columns: 2
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (2): date, precipitation
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 1548 Columns: 2
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (2): date, avg_temp
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Joining with `by = join_by(date)`
+## Rows: 1548 Columns: 2
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (2): date, max_temp
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Joining with `by = join_by(date)`
+## Rows: 1548 Columns: 2
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## dbl (2): date, min_temp
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Joining with `by = join_by(date)`</code></pre>
 </div>
 
 
