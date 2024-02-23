@@ -414,6 +414,26 @@ csv.</h2>
 ## 
 ## ℹ Use `spec()` to retrieve the full column specification for this data.
 ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<p><a href="https://www.census.gov/data/tables/time-series/dec/popchange-data-text.html" class="uri">https://www.census.gov/data/tables/time-series/dec/popchange-data-text.html</a></p>
+<pre class="r"><code>census &lt;- read_csv(&quot;https://www2.census.gov/programs-surveys/decennial/2020/data/apportionment/apportionment.csv&quot;)</code></pre>
+<pre><code>## Rows: 684 Columns: 10
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (2): Name, Geography Type
+## dbl (5): Year, Percent Change in Resident Population, Resident Population De...
+## num (3): Resident Population, Resident Population Density, Average Apportion...
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<pre class="r"><code>census |&gt; filter(Name==&quot;United States&quot;) |&gt; 
+  select(Year, `Resident Population`) |&gt; 
+  rename(year=Year, pop=`Resident Population`) |&gt; 
+  write_csv(file=&#39;clean_data/us_census.csv&#39;)
+
+census |&gt; filter(Name==&quot;Wisconsin&quot;) |&gt; 
+  select(Year, `Resident Population`) |&gt; 
+  rename(year=Year, pop=`Resident Population`) |&gt; 
+  write_csv(file=&#39;clean_data/wi_census.csv&#39;)</code></pre>
 </div>
 
 
