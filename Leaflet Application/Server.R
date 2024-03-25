@@ -19,10 +19,10 @@ temperature_data$end = temperature_data$end - temperature_data$historical
 # Load spatial data with country boundaries
 world <- ne_countries(scale = "medium", returnclass = "sf")
 
-# Merge temperature data with spatial data based on three-letter country codes
+# Merge temperature data with country data
 world_temp <- left_join(world, temperature_data[c("country_code", "mid")], by = c("iso_a3" = "country_code"))
 
-# Reverse the color palette
+# Choose colors
 rev_palette <- colorRampPalette(c("blue", "red"))(100)
 
 server <- function(input, output) {
