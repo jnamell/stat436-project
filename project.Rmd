@@ -48,7 +48,7 @@ wi_weather |>
   pivot_longer(cols=-year, names_to="Temperature") |> 
   ggplot(aes(year, value))+
   geom_line(aes(color=Temperature))+
-  labs(title="Wisconsin Temperatures", x="Year", y="Temp in F")+
+  labs(x="Year", y="Temp in F")+
   scale_color_manual(labels = c("Average", "Max", "Min"),
                      values = c("green", "red", "blue"))
 ```
@@ -63,8 +63,19 @@ p2<-wi_weather |>
   filter(year>1923) |> 
   ggplot()+
   geom_line(aes(year, precipitation))+
-  labs(x="Year", y="Precipitation (inches)")
-p1/p2+
+  labs(x="", y="Precipitation (inches)")
+p3<-wi_weather |> 
+  group_by(year = year(date)) |> 
+  summarize(max_temp=max(max_temp), avg_temp=mean(avg_temp), min_temp=min(min_temp)) |> 
+  filter(year>1923) |> 
+  pivot_longer(cols=-year, names_to="Temperature") |> 
+  ggplot(aes(year, value))+
+  geom_line(aes(color=Temperature))+
+  labs(x="Year", y="Temp in F")+
+  scale_color_manual(labels = c("Average", "Max", "Min"),
+                     values = c("green", "red", "blue"))
+
+p1/p2/p3+
   plot_annotation("Wisconsin Annual Crop Yields vs Annual Precipitation")
 ```
 ```{r}
