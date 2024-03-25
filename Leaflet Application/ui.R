@@ -4,59 +4,30 @@ library(tidyverse)
 library(tsibble)
 library(maps)
 library(colourpicker)
+library(leaflet)
+library(sf)
+library(rnaturalearthdata)
+library(rnaturalearth)
 
-library(ncdf4)
-data <- nc_open("TSavg.djf2015-2100.ensavg.nc")
-lats <- ncvar_get(data, "lat")
-lons <- ncvar_get(data, "lon")
-temp <- ncvar_get(data, "TS")
+# temperature_data <- data.frame(read_csv("~/GitHub/stat436-project/raw_data/Test_Temp.csv"))
+temperature_data <- data.frame(read_csv("Test_Temp.csv"))
+temperature_data$present = temperature_data$present - temperature_data$historical
+temperature_data$mid = temperature_data$mid - temperature_data$historical
+temperature_data$end = temperature_data$end - temperature_data$historical
 
-# Alternative data reading methods that did not work too well...
-# temp <- read_csv("https://uwmadison.box.com/shared/static/aqsak1cbbf81bgiqfhxrxsvlxzlhnxsk.csv")
-# lons <- read_csv("https://uwmadison.box.com/shared/static/ldra9ygas6st3le0l2914h3oipzkxxys.csv")
-# lats <- read_csv("https://uwmadison.box.com/shared/static/n6n4e1wmji4jntzcvcl88y96ypx10pqq.csv")
-# temp <- read_csv("Temperature.csv")
-# lons <- read_csv("Lons.csv")
-# lats <- read_csv("Lats.csv")
+# Load spatial data with country boundaries
+world <- ne_countries(scale = "medium", returnclass = "sf")
 
-# Variable to store our selected latitude and longitude points
-selected <- reactiveValues(points = data.frame(Lat = numeric(0), 
-                                               Lon = numeric(0)))
+# Merge temperature data with spatial data based on three-letter country codes
+world_temp <- left_join(world, temperature_data[c("country_code", "mid")], by = c("iso_a3" = "country_code"))
 
-# User interface
+# Reverse the color palette
+rev_palette <- colorRampPalette(c("blue", "red"))(100)
+
 ui <- fluidPage(
-  titlePanel("Northern Winter Temperature Anomolies in the 21st Century"),
-  helpText("Below is a map plotting predicted temperature anomalies in Northern winter.",
-           "Use the time slider to view the expected change in temperature from 2015."),
-
-  # Slider controls
-  fluidRow(
-    sliderInput("year", "Select Year", min=2015, max=2100, value=2100,
-                width="95%", sep="")
-  ),
-  helpText("Use the longitude and latitude sliders to view a time series of temperature at that point"),
-  fluidRow(
-    sliderInput("Lon", "Longitude", min = 0, 360, value = 180, width="95%")
-  ),
-  fluidRow(
-    sliderInput("Lat", "Latitude", min = -90, max = 90, value = 0, width="95%")
-  ),
-  
-  # Button controls
-  helpText("Click 'Add Point' to save selected lon/lat point to compare with others.",
-           "Click 'Clear Points' to reset selected"),
-  fluidRow(
-    actionButton("addPoint", "Add Point"),
-    actionButton("reset", "Clear Points")
-  ),
-
+  titlePanel("Experimental mapping with historical temperature data"),
+  # Inputs
+  selectInput("Time", "Select Time", c("Present", "Mid-Century", "End-Century"), selected = "Present"),
   # Outputs
-  fluidRow(
-    column(7,
-           plotOutput("heatMap")
-    ),
-    column(5,
-           plotOutput("tSeries")
-    )
-  )
+  leafletOutput("Map")
 )
