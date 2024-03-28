@@ -1,0 +1,49 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+library(tidyverse)
+library(tidygraph)
+library(ggraph)
+library(ggHoriPlot)
+```
+
+## data from https://www.ncei.noaa.gov/access/monitoring/climate-at-a-glance/statewide/time-series
+
+
+```{r}
+data <- read_csv("raw_data/avg_temp_wisconsin.csv", skip = 4)
+data$Date <- ymd(paste(data$Date, "01", sep = "-"))
+
+library(lubridate)
+
+# Split the Date column into year and month
+data$Year <- year(data$Date)
+data$Month <- month(data$Date)
+```
+
+```{r, fig1, fig.height = 8, fig.width = 6}
+data%>%
+  filter(Year >= 1950, Year < 2024)%>%
+  ggplot()+
+  geom_horizon(aes(x = Month, y = Value), horizonscale = 6, reverse = TRUE)+
+  scale_fill_hcl(palette = 'RdBu', reverse = T) +
+  facet_grid(Year~.)+
+  scale_x_continuous(breaks = 1:12, labels = c("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"))+
+  theme(
+    panel.spacing.y=unit(0, "lines"),
+    strip.text.y = element_text(size = 7, angle = 0, hjust = 0),
+    axis.text.y = element_blank(),
+    axis.title.y = element_blank(),
+    axis.ticks.y = element_blank(),
+    panel.border = element_blank(),
+    axis.text.x = element_text(angle = 45, hjust=1))+
+  xlab('Date') +
+  ggtitle('Average daily temperature in Wisconsin', 
+          'from 1950 to 2023')
+
+
+#ggsave("avg_temp_horiplot_updated.png", width = 6, height = 8, units = "in", dpi = 300)
+```
